@@ -49,9 +49,35 @@ npx serve dist    # or any static file server
 
 ## Deploy
 
+### GitHub Pages
+
 Pushing to `main` runs `.github/workflows/pages.yml`, which builds, runs the
 smoke test, and publishes `dist/` to GitHub Pages. Enable Pages with
 **Settings → Pages → Source: GitHub Actions**.
+
+Live: <https://satoshipuzzles.github.io/cornychat-nostr-launcher/>
+
+### Vercel
+
+`vercel.json` pins the build, so importing the repo needs no configuration:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/import?s=https%3A%2F%2Fgithub.com%2Fsatoshipuzzles%2Fcornychat-nostr-launcher)
+
+| Setting | Value |
+| --- | --- |
+| Framework preset | Other |
+| Install command | `npm ci` |
+| Build command | `npm run build` |
+| Output directory | `dist` |
+
+No environment variables are required — the app is entirely client side, and the
+instance URL and relay list are configured in the UI at runtime.
+
+Or from a checkout, with the CLI:
+
+```bash
+npx vercel --prod
+```
 
 ## Licence
 
