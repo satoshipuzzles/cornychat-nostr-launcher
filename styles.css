@@ -1,0 +1,229 @@
+:root {
+  --bg: #12100c;
+  --panel: #1c1913;
+  --panel-2: #241f17;
+  --line: #3a3226;
+  --ink: #f2ead9;
+  --ink-dim: #a89b81;
+  --corn: #f5c542;
+  --corn-dark: #c99a1f;
+  --leaf: #6fbf5b;
+  --bad: #e8705f;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.55 ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-image: radial-gradient(ellipse at 50% -10%, #2a2317 0%, var(--bg) 60%);
+  min-height: 100vh;
+}
+
+.wrap {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 40px 20px 64px;
+}
+
+.hd h1 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+}
+.hd h1 span {
+  color: var(--corn);
+  font-weight: 600;
+}
+.sub {
+  margin: 0 0 28px;
+  color: var(--ink-dim);
+}
+.sub strong { color: var(--ink); font-weight: 600; }
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.card h2 {
+  margin: 0 0 16px;
+  font-size: 17px;
+}
+
+.method {
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+.method:first-of-type {
+  padding-top: 0;
+  border-top: 0;
+}
+.method h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.method h3 small,
+label small {
+  color: var(--corn-dark);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-left: 6px;
+}
+
+.hint {
+  margin: 0 0 10px;
+  color: var(--ink-dim);
+  font-size: 13px;
+}
+.hint.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+
+label {
+  display: block;
+  margin: 14px 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+input, textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+textarea {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  resize: vertical;
+}
+input:focus, textarea:focus {
+  outline: 2px solid var(--corn-dark);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+button {
+  font: inherit;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: filter 0.12s ease, opacity 0.12s ease;
+}
+button:hover:not(:disabled) { filter: brightness(1.12); }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.primary {
+  background: var(--corn);
+  color: #241d07;
+}
+.ghost {
+  background: var(--panel-2);
+  color: var(--ink);
+  border-color: var(--line);
+}
+.small { padding: 7px 12px; font-size: 13px; }
+.danger { color: var(--bad); }
+
+.row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+  background: var(--panel-2);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.error {
+  color: var(--bad);
+  font-size: 13px;
+  margin: 12px 0 0;
+  word-break: break-word;
+}
+
+.hidden { display: none !important; }
+
+/* account */
+.who {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+#avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.who-txt { min-width: 0; }
+.who-txt strong { display: block; font-size: 16px; }
+.npub {
+  display: block;
+  background: none;
+  padding: 0;
+  color: var(--ink-dim);
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+.badge {
+  display: inline-block;
+  margin-top: 5px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  color: var(--leaf);
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* qr */
+.qr {
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  width: fit-content;
+  margin: 0 auto 12px;
+}
+.qr svg { display: block; }
+
+details summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.ft {
+  color: var(--ink-dim);
+  font-size: 12px;
+  margin-top: 28px;
+}
+.ft p { margin: 0 0 6px; }
+.ft a { color: var(--corn-dark); }

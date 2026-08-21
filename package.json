@@ -1,0 +1,22 @@
+{
+  "name": "cornychat-nostr-launcher",
+  "version": "0.1.0",
+  "description": "Static NIP-07 / NIP-46 Nostr sign-in that launches Corny Chat audio rooms.",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node build.mjs && node test/smoke.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "esbuild": "^0.28.2",
+    "nostr-tools": "^2.24.3",
+    "qrcode-generator": "^2.0.4"
+  },
+  "private": true,
+  "devDependencies": {
+    "jsdom": "^30.0.1"
+  }
+}

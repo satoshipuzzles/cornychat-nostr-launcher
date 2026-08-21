@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Corny Chat · Nostr Launcher</title>
+<meta name="description" content="Log in to Nostr with a NIP-07 extension or a NIP-46 remote bunker, then jump into a Corny Chat audio room." />
+<link rel="stylesheet" href="./styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌽</text></svg>" />
+</head>
+<body>
+<main class="wrap">
+
+  <header class="hd">
+    <h1>🌽 Corny Chat <span>Nostr Launcher</span></h1>
+    <p class="sub">Sign in with a <strong>NIP-07</strong> extension or a <strong>NIP-46</strong> remote bunker, then open an audio room.</p>
+  </header>
+
+  <!-- ── logged out ─────────────────────────────────────────── -->
+  <section id="login" class="card">
+    <h2>Sign in</h2>
+
+    <div class="method">
+      <h3>Browser extension <small>NIP-07</small></h3>
+      <p class="hint" id="nip07-hint">Checking for a signer extension…</p>
+      <button id="btn-nip07" class="primary" disabled>Sign in with extension</button>
+    </div>
+
+    <div class="method">
+      <h3>Remote bunker <small>NIP-46</small></h3>
+      <p class="hint">Paste a <code>bunker://</code> URI, or a NIP-05 address like <code>you@nsec.app</code>.</p>
+      <input id="bunker-input" type="text" spellcheck="false" autocomplete="off" placeholder="bunker://… or you@nsec.app" />
+      <button id="btn-bunker" class="primary">Connect bunker</button>
+    </div>
+
+    <div class="method">
+      <h3>Scan to connect <small>nostrconnect://</small></h3>
+      <p class="hint">Generate a connection code and scan or paste it into your signer app.</p>
+      <button id="btn-nc" class="ghost">Generate connect code</button>
+      <div id="nc-panel" class="hidden">
+        <div id="nc-qr" class="qr"></div>
+        <textarea id="nc-uri" readonly rows="3"></textarea>
+        <div class="row">
+          <button id="btn-nc-copy" class="ghost small">Copy URI</button>
+          <button id="btn-nc-cancel" class="ghost small">Cancel</button>
+        </div>
+        <p class="hint" id="nc-status">Waiting for your signer to approve…</p>
+      </div>
+    </div>
+
+    <p id="login-error" class="error hidden"></p>
+  </section>
+
+  <!-- ── logged in ──────────────────────────────────────────── -->
+  <section id="account" class="card hidden">
+    <div class="who">
+      <img id="avatar" alt="" />
+      <div class="who-txt">
+        <strong id="display-name">…</strong>
+        <code id="npub" class="npub"></code>
+        <span id="method-badge" class="badge"></span>
+      </div>
+    </div>
+    <div class="row">
+      <button id="btn-verify" class="ghost small">Test signing</button>
+      <button id="btn-logout" class="ghost small danger">Sign out</button>
+    </div>
+    <p id="verify-out" class="hint mono hidden"></p>
+  </section>
+
+  <section id="rooms" class="card hidden">
+    <h2>Open a room</h2>
+    <label for="room-input">Room name</label>
+    <input id="room-input" type="text" spellcheck="false" autocomplete="off" placeholder="my-room" />
+    <div class="row">
+      <button id="btn-join" class="primary">Join room</button>
+      <button id="btn-random" class="ghost">Random room</button>
+    </div>
+    <p class="hint">Opens <code id="room-preview">…</code></p>
+  </section>
+
+  <!-- ── settings ───────────────────────────────────────────── -->
+  <section class="card">
+    <details id="settings">
+      <summary>Settings</summary>
+      <label for="instance-input">Corny Chat instance</label>
+      <input id="instance-input" type="url" spellcheck="false" placeholder="https://cornychat.com" />
+      <p class="hint">Point this at your own deployment once its <code>pantry</code> + SFU are running.</p>
+      <label for="relays-input">Relays <small>one per line</small></label>
+      <textarea id="relays-input" rows="4" spellcheck="false"></textarea>
+      <div class="row">
+        <button id="btn-save-settings" class="ghost small">Save settings</button>
+        <button id="btn-reset-settings" class="ghost small">Reset to defaults</button>
+      </div>
+      <p id="settings-out" class="hint hidden"></p>
+    </details>
+  </section>
+
+  <footer class="ft">
+    <p>Static launcher — keys never leave your extension or bunker. Audio, presence and rooms are served by the Corny Chat instance above.</p>
+    <p><a href="https://github.com/vicariousdrama/cornychat" rel="noopener">Corny Chat</a> is AGPL-3.0. This launcher is MIT.</p>
+  </footer>
+
+</main>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
